@@ -1,7 +1,16 @@
 import { Typography, Grid } from '@mui/material'
 import ProductsListItem from 'components/ProductsList/ProductsListItem'
+import productsArray from 'utils/productsArray'
 
 type Props = {}
+
+type ProductProps = {
+    title: string
+    description: string
+    type: string
+    capacity: string
+    price: number
+}
 
 const ProductsList = (props: Props) => {
     return (
@@ -9,37 +18,27 @@ const ProductsList = (props: Props) => {
             <Typography variant="h4" align="center" component="h2">
                 Product List
             </Typography>
+
             <Grid container spacing={3}>
-                <Grid item xs={12} sm={6} md={4}>
-                    {''}
-                    <ProductsListItem
-                        title="iPhone 14 pro"
-                        descriptoin="Nice phone"
-                        type="phone"
-                        capacity="256 Gb"
-                        price={1200}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    {''}
-                    <ProductsListItem
-                        title="Samsung Galaxy 20"
-                        descriptoin="Nice phone"
-                        type="phone"
-                        capacity="156 Gb"
-                        price={700}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    {''}
-                    <ProductsListItem
-                        title="Nokia 1050"
-                        descriptoin="Bad phone"
-                        type="phone"
-                        capacity="580 Gb"
-                        price={1800}
-                    />
-                </Grid>
+                {productsArray.map(
+                    ({
+                        title,
+                        description,
+                        type,
+                        capacity,
+                        price,
+                    }: ProductProps) => (
+                        <Grid item xs={12} sm={6} md={4}>
+                            <ProductsListItem
+                                title={title}
+                                description={description}
+                                type={type}
+                                capacity={capacity}
+                                price={price}
+                            />
+                        </Grid>
+                    )
+                )}
             </Grid>
         </>
     )
