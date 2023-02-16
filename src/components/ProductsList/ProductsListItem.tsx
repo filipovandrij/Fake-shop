@@ -18,11 +18,13 @@ type Props = {
 
 type State = {
     count: number
+    color: String
 }
 
 class ProductsListItem extends Component<Props, State> {
     state = {
         count: 1,
+        color: 'green',
     }
 
     onIncrementClick = (num: number) => {
@@ -35,6 +37,20 @@ class ProductsListItem extends Component<Props, State> {
         this.setState((prevState: State) => ({
             count: prevState.count - 1,
         }))
+    }
+
+    changeColor = () => {
+        this.setState((prevState: State) => {
+            if (prevState.color === 'green') {
+                return {
+                    color: 'red',
+                }
+            } else {
+                return {
+                    color: 'green',
+                }
+            }
+        })
     }
 
     render() {
@@ -51,6 +67,13 @@ class ProductsListItem extends Component<Props, State> {
                     <div className="product-features">
                         Capacite: {capacity} Gb
                     </div>
+                    <p>
+                        Color:{' '}
+                        <span className={this.state.color}>
+                            {this.state.color}
+                        </span>
+                    </p>
+                    <button onClick={this.changeColor}>Change color</button>
                     <div className="product-price">{price}$</div>
                     <div className="product-quantity">
                         <Button
