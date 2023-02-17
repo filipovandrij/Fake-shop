@@ -7,6 +7,7 @@ import {
 } from '@mui/material'
 import { useState } from 'react'
 import './ProductsListItem.scss'
+
 type Props = {
     title: string
     description: string
