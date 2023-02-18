@@ -9,12 +9,12 @@ import Menu from 'components/Menu/Menu'
 import CartHeader from 'components/CartHeader/CartHeader'
 
 type Props = {
-    cartData: {
+    basket: {
         totalCount: number
         totalPrice: number
     }
 }
-const Header = ({ cartData }: Props) => {
+const Header = ({ basket }: Props) => {
     return (
         <AppBar position="static" className="app-bar">
             <Container>
@@ -30,7 +30,7 @@ const Header = ({ cartData }: Props) => {
                     </IconButton>
                     <Logo />
                     <Menu />
-                    <CartHeader cartData={cartData} />
+                    <CartHeader basket={basket} />
                 </Toolbar>
             </Container>
         </AppBar>

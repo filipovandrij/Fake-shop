@@ -1,10 +1,17 @@
 import { Typography, Grid } from '@mui/material'
 import ProductsListItem from 'components/ProductsList/ProductsListItem'
+import { useCallback } from 'react'
 import productsArray from 'utils/productsArray'
 
-type Props = {}
+type Props = { addProductToCart: (count: number, price: number) => void }
 
 const ProductsList = (props: Props) => {
+    const addToBusket = useCallback(
+        (count: number, price: number) => () => {
+            props.addProductToCart(count, price)
+        },
+        [props.addProductToCart]
+    )
     return (
         <>
             <Typography
@@ -37,6 +44,7 @@ const ProductsList = (props: Props) => {
                                 capacity={capacity}
                                 price={price}
                                 image={image}
+                                addProductToCart={addToBusket}
                             />
                         </Grid>
                     )

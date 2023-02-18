@@ -10,7 +10,7 @@ const Main = (props: Props) => {
                 padding: '60px 0',
             }}
         >
-            <Home />
+            <Home addProductToCart={props.addProductToCart} />
         </Container>
     )
 }

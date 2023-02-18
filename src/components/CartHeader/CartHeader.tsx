@@ -1,15 +1,15 @@
 type Props = {
-    cartData: {
+    basket: {
         totalCount: number
         totalPrice: number
     }
 }
 
-const CartHeader = ({ cartData }: Props) => {
+const CartHeader = ({ basket }: Props) => {
     return (
         <div>
-            <div>{cartData.totalCount}</div>
-            <div>$ {cartData.totalPrice}</div>
+            <div>{basket.totalCount}</div>
+            <div>$ {basket.totalPrice}</div>
         </div>
     )
 }
