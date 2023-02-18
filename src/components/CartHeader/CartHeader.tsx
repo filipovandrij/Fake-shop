@@ -4,7 +4,7 @@ type Props = {
     }
 }
 
-function CartHeader({ productsInCart }: Props) {
+const CartHeader = ({ productsInCart }: Props) => {
     return (
         <div>
             {Object.keys(productsInCart).map((productId) => (
@@ -15,4 +15,5 @@ function CartHeader({ productsInCart }: Props) {
         </div>
     )
 }
+
 export default CartHeader
