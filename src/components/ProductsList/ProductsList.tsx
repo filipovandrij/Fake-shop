@@ -5,13 +5,7 @@ import productsArray from 'utils/productsArray'
 
 type Props = { addProductToCart: (count: number, price: number) => void }
 
-const ProductsList = (props: Props) => {
-    const addToBusket = useCallback(
-        (count: number, price: number) => () => {
-            props.addProductToCart(count, price)
-        },
-        [props.addProductToCart]
-    )
+const ProductsList = ({ addProductToCart }: Props) => {
     return (
         <>
             <Typography
@@ -44,7 +38,7 @@ const ProductsList = (props: Props) => {
                                 capacity={capacity}
                                 price={price}
                                 image={image}
-                                addProductToCart={addToBusket}
+                                addProductToCart={addProductToCart}
                             />
                         </Grid>
                     )
