@@ -15,6 +15,7 @@ const App = (props: Props) => {
     const [productsInCart, setProductsIncart] = useState<ProductsInCart>({
         1: 5,
         2: 5,
+        3: 1,
     })
 
     const addProductToCart = (count: number, price: number) => {}

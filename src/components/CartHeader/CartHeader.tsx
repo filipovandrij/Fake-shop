@@ -7,8 +7,11 @@ type Props = {
 function CartHeader({ productsInCart }: Props) {
     return (
         <div>
-            <div>{productsInCart[1]}</div>
-            <div>$ {productsInCart[2]}</div>
+            {Object.keys(productsInCart).map((productId) => (
+                <div key={productId}>
+                    {productId} : {productsInCart[parseInt(productId)]}
+                </div>
+            ))}
         </div>
     )
 }
