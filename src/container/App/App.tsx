@@ -1,7 +1,7 @@
 import Header from 'container/Header/Header'
 import Footer from 'container/Footer/Footer'
 import CssBaseline from '@mui/material/CssBaseline'
-import { Container, StyledEngineProvider } from '@mui/material'
+import { Container, Grid, StyledEngineProvider } from '@mui/material'
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from 'pages/Home/Home'
@@ -37,7 +37,10 @@ const App = (props: Props) => {
                         path="/"
                         element={<Home addProductToCart={addProductToCart} />}
                     />
-                    <Route path="cart" element={<CartPage />} />
+                    <Route
+                        path="cart"
+                        element={<CartPage productsInCart={productsInCart} />}
+                    />
                 </Routes>
             </Container>
             <Footer />
