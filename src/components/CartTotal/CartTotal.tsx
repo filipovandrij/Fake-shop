@@ -16,7 +16,7 @@ const CartTotal = ({
         <div>
             Total:
             {Object.keys(productsInCart).reduce(
-                (total: number, productId: string) =>
+                (total, productId) =>
                     total +
                     productsObject[parseInt(productId)].price *
                         productsInCart[parseInt(productId)],
