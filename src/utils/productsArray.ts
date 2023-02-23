@@ -75,4 +75,6 @@ array.reduce(
     {}
     )
 
+    
+
 export default productsArray
