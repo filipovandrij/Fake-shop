@@ -5,9 +5,14 @@ import { Product } from 'utils/productsArray'
 type Props = {
     product: Product
     productCount: number
+    removeProductFromCart: (id: number) => void
 }
 
-const CartProductListItemExtended = ({ product, productCount }: Props) => {
+const CartProductListItemExtended = ({
+    removeProductFromCart,
+    product,
+    productCount,
+}: Props) => {
     return (
         <Grid item>
             <Card>
@@ -20,7 +25,10 @@ const CartProductListItemExtended = ({ product, productCount }: Props) => {
                     <p>Count: {productCount}</p>
                 </CardContent>
                 <CardActions>
-                    <Button variant="outlined">
+                    <Button
+                        variant="outlined"
+                        onClick={() => removeProductFromCart(product.id)}
+                    >
                         <DeleteIcon />
                     </Button>
                 </CardActions>
