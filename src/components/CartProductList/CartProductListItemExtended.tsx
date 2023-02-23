@@ -6,6 +6,7 @@ type Props = {
     product: Product
     productCount: number
 }
+
 const CartProductListItemExtended = ({ product, productCount }: Props) => {
     return (
         <Grid item>
