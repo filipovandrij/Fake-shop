@@ -1,4 +1,11 @@
-import { Card, CardContent, Typography } from '@mui/material'
+import {
+    Button,
+    Card,
+    CardContent,
+    TextareaAutosize,
+    TextField,
+    Typography,
+} from '@mui/material'
 import { useState } from 'react'
 
 type Props = {}
@@ -20,8 +27,40 @@ const Reviews = (props: Props) => {
     ]
 
     const [reviews, setReviews] = useState<Review[]>(arrReviews)
+    const [newReview, setNewReview] = useState<Review>({
+        name: '',
+        text: '',
+    })
 
-    console.log()
+    const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNewReview((prevState) => ({
+            ...prevState,
+            name: e.target.value,
+        }))
+    }
+
+    const handleText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setNewReview((prevState) => ({
+            ...prevState,
+            text: e.target.value,
+        }))
+    }
+
+    const onSend = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if (newReview.name === '' || newReview.text === '') {
+            alert('All fields are required')
+        } else {
+            setNewReview({
+                name: '',
+                text: '',
+            })
+
+            setReviews((prevState) => {
+                return [...prevState, newReview]
+            })
+        }
+    }
 
     return (
         <>
@@ -41,7 +80,7 @@ const Reviews = (props: Props) => {
                         sx={{
                             margin: '20px 0',
                         }}
-                        key={1}
+                        key={i}
                     >
                         <CardContent>
                             <div>{item.name}:</div>
@@ -50,6 +89,29 @@ const Reviews = (props: Props) => {
                     </Card>
                 ))}
             </div>
+
+            <form onSubmit={onSend}>
+                <h3>Please leave a review</h3>
+                <div>
+                    <TextField
+                        label="Name"
+                        value={newReview.name}
+                        onChange={handleName}
+                    ></TextField>
+                </div>
+                <br />
+                <div>
+                    <TextareaAutosize
+                        minRows={5}
+                        placeholder="Text"
+                        value={newReview.text}
+                        onChange={handleText}
+                    />
+                </div>
+                <Button variant="outlined" type="submit">
+                    Send
+                </Button>
+            </form>
         </>
     )
 }
