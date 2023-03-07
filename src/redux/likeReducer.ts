@@ -12,9 +12,21 @@ export const initialState: likeProducrsType = {
 
 export const likeSlice = createSlice({
     name:'like',
-initialState,
-reducers:{},
+    initialState,
+    reducers:{
+        addLike: (state, action) => ({
+            ...state,
+            [action.payload] : true,
+        }),
+        removeLike: (state, action) => ({
+            ...state,
+            [action.payload] : false,
+        })
+    },
 })
+
+
+export const {addLike, removeLike} = likeSlice.actions
 
 
 export default likeSlice.reducer
