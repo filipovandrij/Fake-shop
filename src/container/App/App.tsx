@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from 'pages/Home/Home'
 import CartPage from 'pages/Cart/CartPage'
 import { omit } from 'lodash'
+import CheckoutPage from 'pages/Checkout/CheckoutPage'
 
 type Props = {}
 
@@ -58,6 +59,7 @@ const App = (props: Props) => {
                             />
                         }
                     />
+                    <Route path="checkout" element={<CheckoutPage />} />
                 </Routes>
             </Container>
             <Footer />
