@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material'
+import axios from 'axios'
 import { useState } from 'react'
 
 type Props = {}
@@ -30,6 +31,22 @@ const CheckoutPage = (props: Props) => {
 
     const orderSend = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        axios
+            .post(
+                'https://my-json-server.typicode.com/kznkv-skillup/server/orders',
+                {
+                    name: orderData.name,
+                    address: orderData.address,
+                }
+            )
+            .then((res) => res.data)
+            .then(({ name, address }) => {
+                setOrderData({
+                    name,
+                    address,
+                })
+                setIsOrderSend(true)
+            })
     }
 
     const renderForm = () => {
