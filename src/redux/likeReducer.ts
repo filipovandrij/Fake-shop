@@ -5,8 +5,6 @@ type likeProducrsType = {
 }
 
 export const initialState: likeProducrsType = {
-1:true,
-3:true,
 }
 
 

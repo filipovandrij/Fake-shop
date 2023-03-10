@@ -6,8 +6,6 @@ type CartType = {
 }
 
 export const initialState: CartType = {
-    1: 3,
-    2: 3,
 }
 
 
